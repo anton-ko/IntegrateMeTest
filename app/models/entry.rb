@@ -5,7 +5,7 @@ class Entry < ActiveRecord::Base
 
   before_validation :clean_email
 
-  validates_presence_of :competition, inverse_of: :entries
+  validates_presence_of :competition
   validates_presence_of :email
   validates_format_of :email, :with => EMAIL_REGEX, allow_blank: true, allow_nil: true
   validates_presence_of :name, if: :requires_name
@@ -17,6 +17,6 @@ class Entry < ActiveRecord::Base
     end
 
     def requires_name
-      competition.requires_entry_name?
+      competition&.requires_entry_name?
     end
 end
