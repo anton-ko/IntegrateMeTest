@@ -4,8 +4,8 @@ class SubscribeNewEntryJob < ActiveJob::Base
   def perform(entry)
     Gibbon::Request
       .lists(entry.competition.mailing_list_id)
-      .members
-      .create(
+      .members(Digest::MD5.hexdigest(entry.email).downcase)
+      .upsert(
         body: {
           email_address: entry.email,
           status: 'subscribed',
@@ -13,6 +13,6 @@ class SubscribeNewEntryJob < ActiveJob::Base
         }
       )
   rescue Gibbon::MailChimpError => e
-    logger.error "MailChimp Error: #{e.message}"
+    logger.error "MailChimp Error: entry ##{entry.id} #{entry.email} - #{e.message}"
   end
 end
