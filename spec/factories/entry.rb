@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :entry do
     competition
-    name { 'John Smith' }
-    sequence(:email) { |n| "entry#{n}@example.com" }
+    name { Faker::Name.name }
+    email { Faker::Internet.email }
   end
 end
