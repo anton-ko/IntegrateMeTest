@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe "Entries", type: :request do
   describe "POST /entries.json" do
     it "saves new entry and submits email to mailchimp" do
-      stub_request(:put, "https://us00.api.mailchimp.com/3.0/lists/a0000aa0aa/members/8eb1b522f60d11fa897de1dc6351b7e8")
+      member_id = Digest::MD5.hexdigest('john.doe@example.com')
+
+      mock_request = stub_request(:put, "https://us00.api.mailchimp.com/3.0/lists/a0000aa0aa/members/#{member_id}")
         .with(body: {
             email_address: "john.doe@example.com",
             status: "subscribed",
@@ -23,6 +25,12 @@ RSpec.describe "Entries", type: :request do
           }
         end.to change { Entry.count }.by(1)
       end
+
+      expect(mock_request).to have_been_made
+
+      expect(response).to have_http_status(200)
+      expect(response.content_type).to eq("application/json")
+      expect(response.body).to eq('{"success":true}')
     end
   end
 end

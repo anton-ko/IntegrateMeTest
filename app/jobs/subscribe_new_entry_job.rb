@@ -2,17 +2,15 @@ class SubscribeNewEntryJob < ActiveJob::Base
   queue_as :default
 
   def perform(entry)
-    Gibbon::Request
-      .lists(entry.competition.mailing_list_id)
-      .members(Digest::MD5.hexdigest(entry.email).downcase)
-      .upsert(
-        body: {
-          email_address: entry.email,
-          status: 'subscribed',
-          merge_fields: { FNAME: entry.first_name, LNAME: entry.last_name }
-        }
-      )
-  rescue Gibbon::MailChimpError => e
-    logger.error "MailChimp Error: entry ##{entry.id} #{entry.email} - #{e.message}"
+    EmailSubscriptionHandler.new(entry.email).subscribe(
+      entry.competition.mailing_list_id,
+      entry.first_name,
+      entry.last_name
+    )
+  rescue EmailSubscriptionHandler::SubscriptionError => e
+    logger.info("Email subscription error: #{e.message}")
+  rescue EmailSubscriptionHandler::ServiceError => e
+    logger.error("Email subscription service error: #{e.message}")
+    # TODO: Retry later in case the service comes back up online
   end
 end
