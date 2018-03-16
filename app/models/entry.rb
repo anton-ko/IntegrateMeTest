@@ -4,7 +4,6 @@ class Entry < ActiveRecord::Base
   belongs_to :competition
 
   before_validation :clean_email
-  after_commit :subscribe
 
   validates_presence_of :competition
   validates_presence_of :email
@@ -27,9 +26,5 @@ class Entry < ActiveRecord::Base
 
     def requires_name
       competition&.requires_entry_name?
-    end
-
-    def subscribe
-      SubscribeNewEntryJob.perform_later(self)
     end
 end
