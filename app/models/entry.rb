@@ -12,11 +12,11 @@ class Entry < ActiveRecord::Base
   validates_uniqueness_of :email, scope: :competition, message: "has already entered this competition"
 
   def first_name
-    name.rpartition(' ').first if name
+    namae.given
   end
 
   def last_name
-    name.rpartition(' ').last if name
+    namae.family
   end
 
   private
@@ -26,5 +26,9 @@ class Entry < ActiveRecord::Base
 
     def requires_name
       competition&.requires_entry_name?
+    end
+
+    def namae
+      @namae ||= Namae::Name.parse(name)
     end
 end

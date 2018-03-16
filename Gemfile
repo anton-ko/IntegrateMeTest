@@ -18,6 +18,7 @@ gem 'angularjs-rails'
 gem 'angular_rails_csrf'
 
 gem 'gibbon'
+gem 'namae'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
@@ -37,6 +38,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'factory_bot_rails'
+  gem 'faker'
   gem 'rspec-rails'
 end
 
