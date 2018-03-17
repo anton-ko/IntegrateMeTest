@@ -1,12 +1,13 @@
 # Getting the app running
 
-1. bundle install
-2. bundle exec rake db:migrate
-3. RAILS_ENV=test bundle exec rake db:migrate
-4. bundle exec rake db:seed
-5. bundle exec rspec
-6. bundle exec rails s
-7. bundle exec sidekiq
+1. `cp .env .env.local`, edit environment variables in `.env.local` file  
+2. `bundle install`
+3. `bundle exec rake db:migrate`
+4. `RAILS_ENV=test bundle exec rake db:migrate`
+5. `bundle exec rake db:seed`
+6. `bundle exec rspec`
+7. `bundle exec rails s`
+8. `bundle exec sidekiq`
 
 # Integrate with MailChimp
 * Send through their name/email
