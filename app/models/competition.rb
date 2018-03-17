@@ -5,6 +5,6 @@ class Competition < ActiveRecord::Base
 
   # competitions are expected to have their own mailing lists, so, stubbing out this method for future use
   def mailing_list_id
-    ENV['MAILING_LIST_ID'] || ('a0000aa0aa' if Rails.env.test?)
+    ENV['MAILING_LIST_ID']
   end
 end
