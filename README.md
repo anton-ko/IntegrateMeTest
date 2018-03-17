@@ -6,6 +6,7 @@
 4. bundle exec rake db:seed
 5. bundle exec rspec
 6. bundle exec rails s
+7. bundle exec sidekiq
 
 # Integrate with MailChimp
 * Send through their name/email

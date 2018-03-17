@@ -1,6 +1,4 @@
-class SubscribeNewEntryJob < ActiveJob::Base
-  queue_as :default
-
+class SubscribeNewEntryJob < ApplicationJob
   def perform(entry)
     EmailSubscriptionHandler.new(entry.email).subscribe(
       entry.competition.mailing_list_id,
@@ -11,6 +9,6 @@ class SubscribeNewEntryJob < ActiveJob::Base
     logger.info("Email subscription error: #{e.message}")
   rescue EmailSubscriptionHandler::ServiceError => e
     logger.error("Email subscription service error: #{e.message}")
-    # TODO: Retry later in case the service comes back up online
+    raise e # sidekiq will retry the job later
   end
 end

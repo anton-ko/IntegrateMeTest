@@ -19,6 +19,7 @@ gem 'angular_rails_csrf'
 
 gem 'gibbon'
 gem 'namae'
+gem 'sidekiq'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
