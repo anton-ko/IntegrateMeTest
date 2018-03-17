@@ -6,9 +6,7 @@ RSpec.describe EmailSubscriptionHandler do
     lists = double('lists')
     members = double('members')
 
-    # Gibbon call chain: Gibbon::Request.lists.members.upsert
-    expect(Gibbon::Request).to receive(:lists).with(entry.competition.mailing_list_id).and_return(lists)
-    expect(lists).to receive(:members).with(Digest::MD5.hexdigest(entry.email)).and_return(members)
+    members = stub_gibbon_members(entry.competition.mailing_list_id, entry.email)
     expect(members).to receive(:upsert).with(body: {
       email_address: entry.email,
       status: 'subscribed',
@@ -16,8 +14,8 @@ RSpec.describe EmailSubscriptionHandler do
     })
 
     EmailSubscriptionHandler
-      .new(entry.email)
-      .subscribe(entry.competition.mailing_list_id, entry.first_name, entry.last_name)
+      .new(entry.competition.mailing_list_id)
+      .subscribe(entry.email, entry.first_name, entry.last_name)
   end
 
 
@@ -32,19 +30,15 @@ RSpec.describe EmailSubscriptionHandler do
 
     expect do
       EmailSubscriptionHandler
-        .new('jane_doe@example.com')
-        .subscribe(Competition.new.mailing_list_id, 'Jane', 'Doe')
+        .new(Competition.new.mailing_list_id)
+        .subscribe('jane_doe@example.com', 'Jane', 'Doe')
     end.to raise_error(EmailSubscriptionHandler::ServiceError)
   end
 
   it 'raises SubscriptionError if there is an issue with sent data' do
     entry = build(:entry)
-    lists = double('lists')
-    members = double('members')
 
-    # Gibbon call chain: Gibbon::Request.lists.members.upsert
-    expect(Gibbon::Request).to receive(:lists).with(entry.competition.mailing_list_id).and_return(lists)
-    expect(lists).to receive(:members).with(Digest::MD5.hexdigest(entry.email)).and_return(members)
+    members = stub_gibbon_members(entry.competition.mailing_list_id, entry.email)
     expect(members).to receive(:upsert).with(body: {
       email_address: entry.email,
       status: 'subscribed',
@@ -53,8 +47,8 @@ RSpec.describe EmailSubscriptionHandler do
 
     expect do
       EmailSubscriptionHandler
-        .new(entry.email)
-        .subscribe(entry.competition.mailing_list_id, entry.first_name, entry.last_name)
+        .new(entry.competition.mailing_list_id)
+        .subscribe(entry.email, entry.first_name, entry.last_name)
     end.to raise_error(EmailSubscriptionHandler::SubscriptionError)
   end
 

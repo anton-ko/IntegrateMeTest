@@ -1,7 +1,7 @@
 class SubscribeNewEntryJob < ApplicationJob
   def perform(entry)
-    EmailSubscriptionHandler.new(entry.email).subscribe(
-      entry.competition.mailing_list_id,
+    EmailSubscriptionHandler.new(entry.competition.mailing_list_id).subscribe(
+      entry.email,
       entry.first_name,
       entry.last_name
     )
