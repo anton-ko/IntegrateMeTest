@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160125020403) do
+ActiveRecord::Schema.define(version: 20180321225649) do
+
+  create_table "accounts", force: :cascade do |t|
+    t.string "mailchimp_key"
+  end
 
   create_table "competitions", force: :cascade do |t|
     t.string   "name"
