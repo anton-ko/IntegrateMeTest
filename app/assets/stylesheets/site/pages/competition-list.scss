@@ -1,0 +1,55 @@
+@import 'mixins';
+@import 'site/colors';
+
+.competitions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: #fff;
+    box-shadow: 0 5px 15px 0 rgba(0,0,0,0.1);
+    display: flex;
+
+    &__main {
+      flex-grow: 1;
+    }
+
+    &__name {
+      margin-bottom: 0.5rem;
+      a {
+        @include font-size(24px);
+        color: $font-color-light;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    &__mail_list {
+      color: $font-color-lighter;
+
+      &__link {
+        color: $font-color;
+        text-decoration: underline;
+        &--external {
+          &:after {
+            content: url("data:image/svg+xml;utf8,<svg fill='#666' xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 8 8'><path d='M0 0v8h8v-2h-1v1h-6v-6h1v-1h-2zm4 0l1.5 1.5-2.5 2.5 1 1 2.5-2.5 1.5 1.5v-4h-4z' /></svg>");
+            margin: 0 3px;
+            vertical-align: middle;
+          }
+        }
+      }
+
+      &__actions {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+}
+
+.api_key_form {
+  &__input {
+    width: 17.5rem;
+  }
+}

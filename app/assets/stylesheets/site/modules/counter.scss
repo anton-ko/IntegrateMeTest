@@ -1,0 +1,15 @@
+@import "mixins";
+
+.counter {
+  text-align: center;
+  &__number {
+    @include font-size(32px);
+    font-weight: 300;
+  }
+  &__description {
+    @include font-size(16px);
+  }
+  &--right {
+    text-align: right;
+  }
+}

@@ -1,0 +1,14 @@
+.alert {
+  padding: 1rem;
+  border: 1px solid;
+
+  &--warning {
+    background-color: #fdf6ed;
+    border-color: #ffd2b1;
+    color: #ef5f5f;
+  }
+
+  &__form {
+    margin-top: 1rem;
+  }
+}
