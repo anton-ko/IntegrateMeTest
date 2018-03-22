@@ -1,11 +1,11 @@
-class EmailSubscriptionHandler
-  def initialize(mailing_list_id)
-    @mailing_list_id = mailing_list_id
+class MailingListService
+  def initialize(api_key)
+    @api_key = api_key
   end
 
-  def subscribe(email, first_name, last_name)
-    Gibbon::Request
-      .lists(@mailing_list_id)
+  def subscribe(mailing_list_id, email, first_name, last_name)
+    Gibbon::Request.new(api_key: @api_key)
+      .lists(mailing_list_id)
       .members(Digest::MD5.hexdigest(email))
       .upsert(
         body: {

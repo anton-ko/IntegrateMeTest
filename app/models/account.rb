@@ -1,4 +1,5 @@
 class Account < ActiveRecord::Base
+  has_many :competitions, inverse_of: :account
 
   # stub out user's account and always use account with id=1
   def self.find_current_account

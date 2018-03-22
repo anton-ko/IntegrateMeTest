@@ -5,7 +5,7 @@ class EntriesController < ApplicationController
     @entry = Entry.new(entry_params)
 
     if @entry.save
-      SubscribeNewEntryJob.perform_later(@entry)
+      SubscribeNewEntryJob.perform_later(@entry) if @entry.competition.subscribes_to_mailing_list?
       render json: {success: true}
     else
       render json: {success: false, errors: @entry.errors}
