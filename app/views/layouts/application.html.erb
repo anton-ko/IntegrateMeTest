@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="integrate">
+<html>
 <head>
   <title>IntegrateMe</title>
 
@@ -11,10 +11,22 @@
   <%= javascript_pack_tag 'application' %>
   <%= javascript_pack_tag 'entrant_page' %>
   <%#= stylesheet_pack_tag 'entrant_page' %>
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 </head>
-<body>
+<body class="main">
+  <header class="header">
+    <div class="l-constrained">
+      <div class="header__logo">
+        <a href="<% root_path %>" class="header__appname">Competition App</a>
+      </div>
+    </div>
+  </header>
 
-<%= yield %>
+  <div class="l-vertical l-grow-1">
+    <%= yield %>
+  </div>
 
+  <footer class="footer"></footer>
 </body>
 </html>

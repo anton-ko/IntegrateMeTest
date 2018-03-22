@@ -1,0 +1,44 @@
+@mixin layout-percent($size) {
+  width: percentage($size/100);
+  max-width: percentage($size/100);
+}
+
+@mixin layout-percent-h($size) {
+  height: percentage($size/100);
+  max-height: percentage($size/100);
+}
+
+
+.l-horizontal {
+  display: flex;
+}
+
+.l-vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.l-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.l-vertical-full-container {
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+}
+
+.l-grow-1 {
+  flex-grow: 1;
+}
+
+
+.l-constrained {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}

@@ -1,0 +1,9 @@
+$font-color: #555;
+$primary-color: #00aeef;
+
+$error: #fe593f;
+$success: #43c69b;
+
+@mixin gradient-dark {
+  background-image: linear-gradient(110deg, #393b4f, #3c3e4e 38%, #40414d);
+}

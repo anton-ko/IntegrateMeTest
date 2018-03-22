@@ -1,5 +1,4 @@
 class AccountSettingsController < ApplicationController
-
   def edit
     render json: { mailchimp_key: current_account.mailchimp_key_obfuscated }
   end
@@ -15,10 +14,6 @@ class AccountSettingsController < ApplicationController
   end
 
   private
-
-  def current_account
-    @current_account ||= Account.find_current_account
-  end
 
   def account_params
     params.require(:account).permit(:mailchimp_key)
