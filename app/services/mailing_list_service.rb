@@ -1,4 +1,8 @@
 class MailingListService
+  def self.valid_key?(api_key)
+    true #TODO: implement actual checking
+  end
+
   def initialize(api_key)
     @api_key = api_key
   end

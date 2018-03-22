@@ -4,6 +4,22 @@ RSpec.describe MailingListService do
   let(:api_key) { "#{SecureRandom.hex(16)}-us00" }
   let(:entry) { build(:entry) }
 
+  describe '.valid_api_key?' do
+    context 'when key is valid' do
+      it 'validates the key and returns true' do
+        pending 'pending implementation'
+        fail
+      end
+    end
+
+    context 'when key is invalid' do
+      it 'validates the key and returns false' do
+        pending 'pending implementation'
+        fail
+      end
+    end
+  end
+
   it 'adds an email address to a mailing list' do
     members = stub_gibbon_members(api_key, entry.competition.mailing_list_id, entry.email)
     expect(members).to receive(:upsert).with(body: {
