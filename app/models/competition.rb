@@ -6,7 +6,9 @@ class Competition < ActiveRecord::Base
 
   scope :with_entries_counts, -> {
     # consider adding entries_count field and using counter_cache instead
-    select('competitions.*, COUNT(entries.id) as entries_count').joins(:entries).group('competitions.id')
+    select('competitions.*, COUNT(entries.id) as entries_count')
+      .joins('LEFT JOIN entries ON entries.competition_id = competitions.id')
+      .group('competitions.id')
   }
 
   def subscribes_to_mailing_list?
