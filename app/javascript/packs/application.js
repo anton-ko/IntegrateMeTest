@@ -1,10 +1,23 @@
-/* eslint no-console:0 */
-// This file is automatically compiled by Webpack, along with any other files
-// present in this directory. You're encouraged to place your actual application logic in
-// a relevant structure within app/javascript and only use these pack files to reference
-// that code so it'll be compiled.
-//
-// To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
-// layout file, like app/views/layouts/application.html.erb
+import Vue from 'vue/dist/vue.esm';
+import Axios from 'axios';
 
-// console.log('Hello World from Webpacker')
+import EntrantPage from '../components/entrant_page.vue';
+
+const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+Axios.defaults.headers.common['X-CSRF-Token'] = token;
+Axios.defaults.headers.common.Accept = 'application/json';
+
+Vue.prototype.$http = Axios;
+
+Vue.component('entrant-page', EntrantPage);
+
+document.addEventListener('DOMContentLoaded', () => {
+  const element = document.getElementById('competition-app');
+
+  if (element !== undefined) {
+    const app = new Vue({
+      el: element,
+      components: { EntrantPage },
+    });
+  }
+});
