@@ -9,12 +9,14 @@
         <p>Thank you for entering our competition!</p>
       </div>
       <div v-else>
-        <div id="error_explanation" v-if="Object.keys(field_errors).length > 0">
+        <div id="error_explanation" v-if="Object.keys(field_errors).length > 0" class="alert alert--error">
           Sorry, ther was a problem saving your entry:
           <ul>
-            <li v-for="(error_messages, field) in field_errors" :key="field">
+            <li v-for="(error_messages, field) in field_errors" :key="`errors-${field}`">
               {{field}}:
-              <span v-for="message in error_messages">{{message}}</span>
+              <span v-for="(message, index) in error_messages" :key="`error-msg-${index}`">
+                {{message}}
+              </span>
             </li>
           </ul>
         </div>

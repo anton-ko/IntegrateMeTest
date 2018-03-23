@@ -8,6 +8,9 @@
   max-height: percentage($size/100);
 }
 
+.l-horizontal {
+  display: flex
+}
 .l-center {
   display: flex;
   align-items: center;

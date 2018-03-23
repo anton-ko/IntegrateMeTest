@@ -9,7 +9,7 @@ class AccountSettingsController < ApplicationController
     if current_account.valid_api_keys? && current_account.save
       render json: { success: true, data: { mailchimp_key: current_account.mailchimp_key_obfuscated } }
     else
-      render json: { success: false, errors: current_account.errors }
+      render json: { success: false, errors: current_account.errors.full_messages_for(:mailchimp_key) }
     end
   end
 

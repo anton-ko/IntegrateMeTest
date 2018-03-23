@@ -12,6 +12,10 @@ class Account < ActiveRecord::Base
   end
 
   def valid_api_keys? # separate method rather than a validator because we don't want to make API calls all the time
-    MailingListService.valid_key?(mailchimp_key)
+    unless MailingListService.valid_key?(mailchimp_key)
+      errors[:mailchimp_key] << :invalid
+      return false
+    end
+    true
   end
 end

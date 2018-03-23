@@ -1,69 +1,9 @@
 <div class="l-constrained">
   <h1 class="page-title">Competition Dashboard</h1>
 
-  <div class="l-center">
-    <div class="alert alert--warning">
-      <div class="alert__inner">
-        Please, enter your MailChimp API key to activate email subscriptions
-      </div>
+  <competition-dashboard
+    :competitions="<%= @competitions.to_json %>"
+    saved_api_key="<%= @account.mailchimp_key_obfuscated %>">
+  </competition-dashboard>
 
-      <div id="api_key_form" class="alert__form api_key_form">
-        <input type="text" id="api_key" class="input api_key_form__input" placeholder="<%= '*' * 32 %>-us00"/>
-        <button id="save_api_key" class="btn btn--warning">Save</button>
-      </div>
-    </div>
-  </div>
-  <% if @competitions.any? %>
-
-    <ul class="competitions">
-      <% @competitions.each do |competition| %>
-
-        <li class="competitions__item">
-          <div class="competitions__item__main">
-            <div class="competitions__item__name">
-              <%= link_to competition.name, competition_entrant_page(competition) %>
-            </div>
-
-            <div class="competitions__item__mail_list">
-              <%- if [false, true].sample #competition.mailing_list_id.present? %>
-                <strong>My subscription list</strong>
-                <span class="competitions__item__mail_list__actions">
-                  (
-                    <%= link_to 'change', '#', class: 'competitions__item__mail_list__link' %> |
-                    <%= link_to 'visit', '#', class: 'competitions__item__mail_list__link competitions__item__mail_list__link--external' %>
-                  )</span>
-              <% else %>
-                <%= link_to 'Select email list', '#', class: 'competitions__item__mail_list__link' %>
-              <% end -%>
-            </div>
-
-            <div class="competitions__item__selector" >
-              <div id="mail_list_form">
-                <select name="mailing_list_id" id="mailing_list_id" class="select">
-                    <option></option>
-                    <option>My subscription list 2</option>
-                </select>
-                <button class="btn btn--primary">Save</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="competitions__item__meta">
-            <div class="counter counter--right">
-              <div class="counter__number">
-                <%= competition.entries_count %>
-              </div>
-              <div class="counter__description">
-                <%= 'entry'.pluralize(competition.entries_count) %>
-              </div>
-            </div>
-          </div>
-        </li>
-
-      <% end %>
-    </ul>
-
-  <% else %>
-    <p>Seed your data!</p>
-  <% end %>
 </div>

@@ -7,14 +7,14 @@ RSpec.describe MailingListService do
   describe '.valid_api_key?' do
     context 'when key is valid' do
       it 'validates the key and returns true' do
-        pending 'pending implementation'
+        pending 'pending test implementation'
         fail
       end
     end
 
     context 'when key is invalid' do
       it 'validates the key and returns false' do
-        pending 'pending implementation'
+        pending 'pending test implementation'
         fail
       end
     end
