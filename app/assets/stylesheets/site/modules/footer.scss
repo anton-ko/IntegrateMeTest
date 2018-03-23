@@ -1,8 +1,0 @@
-@import 'mixins';
-@import 'site/colors';
-
-.footer {
-  margin-top:20px;
-  height: calculateRem(96px);
-  @include gradient-dark;
-}

@@ -1,18 +1,18 @@
 <template>
-  <li class="competitions__item">
-    <div class="competitions__item__main">
-      <div class="competitions__item__name">
+  <li class="competition-item">
+    <div class="competition-item__main">
+      <div class="competition-item__name">
         <a :href="competition.path">{{competition.name}}</a>
       </div>
         <transition>
-          <div v-if="!list_selector_shown" class="competitions__item__mail_list">
+          <div v-if="!list_selector_shown" class="competition-item__mail_list">
             <template v-if="mailing_list_id">
               Mailing list: <strong>{{mailing_list_name}}</strong>
-              <span class="competitions__item__mail_list__actions">
+              <span class="competition-item__mail_list__actions">
                 (
                   <a v-on:click.prevent="show_selector" :aria-disabled="request_in_progress" href="#"
-                     class="competitions__item__link">change</a> |
-                  <a :href="mailing_list_url" class="competitions__item__link competitions__item__link--external"
+                     class="competition-item__link">change</a> |
+                  <a :href="mailing_list_url" class="competition-item__link competition-item__link--external"
                       target="_blank">visit</a>
                 )
               </span>
@@ -20,11 +20,11 @@
 
             <template v-else>
               <a v-on:click.prevent="show_selector" :aria-disabled="request_in_progress" href="#"
-                 class="competitions__item__link" >Select a mailing list</a>
+                 class="competition-item__link" >Select a mailing list</a>
             </template>
           </div>
 
-          <div v-else class="competitions__item__selector">
+          <div v-else class="competition-item__selector">
             <div id="mail_list_form">
               <label for="mailing_list_id">Select a mailing list</label>
               <select :disabled="request_in_progress" v-model="mailing_list_id"
@@ -46,7 +46,7 @@
         </transition>
     </div>
 
-    <div class="competitions__item__meta">
+    <div class="competition-item__meta">
       <div class="counter counter--right">
         <div class="counter__number">
           {{ competition.entries_count }}
