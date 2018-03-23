@@ -17,7 +17,7 @@ RSpec.describe "Entries", type: :request do
         expect do
           post entries_path, {
             entry: {
-              competition_id: create(:competition, requires_entry_name: true).id,
+              competition_id: create(:competition, requires_entry_name: true, mailing_list_id: 'a0000aa0aa').id,
               name: 'John Doe',
               email: 'john.doe@example.com'
             },

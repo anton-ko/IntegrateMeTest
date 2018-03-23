@@ -1,0 +1,58 @@
+@import mixins
+@import site/colors
+
+.competitions
+  margin: 0
+  padding: 0
+
+  list-style: none
+
+.competition-item
+  display: flex
+
+  margin: 1rem 0
+  padding: 1rem
+
+  background: #fff
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, .1)
+
+  &__main
+    flex-grow: 1
+
+  &__name
+    margin-bottom: .5rem
+
+    a
+      color: $font-color-light
+
+      +font-size(24px)
+
+  &__link
+    text-decoration: underline
+
+    color: $font-color
+
+    &--external
+      &:after
+        margin: 0 3px
+
+        content: url('data:image/svg+xml;utf8,<svg fill=\'#666\' xmlns=\'http://www.w3.org/2000/svg\' width=\'12\' height=\'12\' viewBox=\'0 0 8 8\'><path d=\'M0 0v8h8v-2h-1v1h-6v-6h1v-1h-2zm4 0l1.5 1.5-2.5 2.5 1 1 2.5-2.5 1.5 1.5v-4h-4z\' /></svg>')
+        vertical-align: middle
+
+      &[aria-disabled]
+        cursor: wait
+        text-decoration: none
+
+        color: $font-color-lighter
+
+  &__mail_list
+    margin-top: .7rem
+
+    color: $font-color-light
+
+    &__actions
+      margin-left: .5rem
+
+    &__selector [disabled]
+      cursor: wait
+

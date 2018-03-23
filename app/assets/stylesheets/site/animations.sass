@@ -1,0 +1,41 @@
+.fade-enter-active
+  animation: bounce-in 1s
+
+.fade-leave-active
+  animation: bounce-in .8s reverse
+
+@keyframes bounce-in
+  0%
+    transform: translateX(-100vw)
+
+  50%
+    transform: translateX(+5rem)
+
+  100%
+    transform: translateX(0)
+
+.shake-enter-active
+  animation: shake .5s
+
+@keyframes shake
+  0%
+    transform: translateX(0)
+
+  10%
+    transform: translateX(.5rem)
+
+  20%
+    transform: translateX(-1rem)
+
+  40%
+    transform: translateX(1.5rem)
+
+  60%
+    transform: translateX(-2rem)
+
+  80%
+    transform: translateX(1.5rem)
+
+  100%
+    transform: translateX(0)
+

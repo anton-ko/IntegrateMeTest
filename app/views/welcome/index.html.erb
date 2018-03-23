@@ -1,14 +1,9 @@
-<h1>Competition App</h1>
+<div class="l-constrained">
+  <h1 class="page-title">Competition Dashboard</h1>
 
-<h2>Enter competitions below</h2>
+  <competition-dashboard
+    :competitions="<%= @competitions.to_json %>"
+    saved_api_key="<%= @account.mailchimp_key_obfuscated %>">
+  </competition-dashboard>
 
-<% if @competitions.any? %>
-  <ul>
-    <% @competitions.each do |competition| %>
-      <li><%= link_to competition.name, competition_entrant_page(competition) %></li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>Seed your data!</p>
-<% end %>
-
+</div>

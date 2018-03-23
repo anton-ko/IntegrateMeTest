@@ -1,13 +1,14 @@
 # Getting the app running
-
-1. `cp .env .env.local`, edit environment variables in `.env.local` file  
-2. `bundle install`
+  
+1. `bundle install`
+2. `yarn install`
 3. `bundle exec rake db:migrate`
 4. `RAILS_ENV=test bundle exec rake db:migrate`
 5. `bundle exec rake db:seed`
 6. `bundle exec rspec`
 7. `bundle exec rails s`
 8. `bundle exec sidekiq`
+9. `./bin/webpack-dev-server`
 
 # Integrate with MailChimp
 * Send through their name/email

@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "@rails/webpacker": "^3.3.1",
+    "axios": "^0.18.0",
+    "vue": "^2.5.16",
+    "vue-loader": "^14.2.1",
+    "vue-template-compiler": "^2.5.16"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-vue": "^4.3.0",
+    "webpack-dev-server": "2.11.2"
+  },
+  "scripts": {
+    "lint": "yarn run eslint -- --ext .js --ext .vue app/javascript"
+  }
+}

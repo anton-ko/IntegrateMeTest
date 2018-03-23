@@ -1,0 +1,36 @@
+@import mixins
+@import site/colors
+
+.header
+  display: flex
+  flex-direction: column
+  justify-content: center
+
+  height: calculateRem(64px)
+
+  background-image: linear-gradient(97deg, #55df98, #5fb4f1)
+
+  &__logo
+    display: flex
+    align-items: flex-start
+
+    &:before
+      line-height: 1
+
+      display: block
+
+      margin-right: .5rem
+
+      content: '🎯'
+
+      +font-size(36px)
+
+  &__appname
+      display: block
+
+      font-weight: 700
+
+      color: white
+
+      +font-size(32px)
+

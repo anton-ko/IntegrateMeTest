@@ -1,0 +1,29 @@
+@import mixins
+@import colors
+
+=main-font-family
+  font-family: 'Lato', sans-serif
+
+body
+  font-weight: 400
+  line-height: 1.2
+
+  margin: 0
+
+  color: $font-color
+
+  +main-font-family
+  +font-size(16px)
+
+a
+  text-decoration: none
+
+.main
+  display: flex
+  overflow-x: hidden
+  flex-direction: column
+
+  min-height: 100vh
+
+  background-image: linear-gradient(#f2f4f7, #f4f8f9)
+
